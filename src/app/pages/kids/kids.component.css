@@ -1,0 +1,106 @@
+.contain-fluid {
+    cursor: pointer;
+}
+
+.carousel-inner {
+    height: 700px;
+}
+
+.carousel-inner .carousel-item img {
+    height: 700px;
+    object-fit: cover;
+}
+
+.carousel-caption h2 {
+    color: #E50914;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.carousel-caption p {
+    color: #ffffff;
+}
+
+.rowposter {
+    overflow-y: hidden;
+    overflow-x: scroll;
+    padding: 0 15px;
+}
+
+.rowposter-inner {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+}
+
+.rowimg {
+    max-height: 300px;
+    object-fit: contain;
+    width: auto;
+    box-sizing: content-box;
+    margin-right: 7px;
+}
+
+.rowimg:hover {
+    cursor: pointer;
+}
+
+.rowposter::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-control-next:hover {
+    background-color: rgba(32, 30, 30, 0.267);
+}
+
+.carousel-control-prev:hover {
+    background-color: rgba(32, 30, 30, 0.267);
+}
+
+.category-scroll-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category-scroll-arrows {
+    background: none;
+    cursor: pointer;
+    position: absolute;
+    top: 60%;
+    transform: translateY(-60%);
+}
+
+.carousel-control-next {
+    height: 100%;
+    width: 5%;
+}
+
+.carousel-control-prev {
+    height: 100%;
+    width: 5%;
+}
+
+.arrowLeft {
+    float: left;
+}
+
+.arrowRight {
+    float: right;
+    right: 0;
+}
+
+.arrowLeft:hover {
+    color: white;
+}
+
+
+.arrowRight:hover {
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}

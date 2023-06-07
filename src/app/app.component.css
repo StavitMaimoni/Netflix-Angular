@@ -1,0 +1,50 @@
+.navbar .navbar-brand {
+    color: #E50914;
+    font-weight: bold;
+    font-size: 1.85rem;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: white;
+    font-size: 0.85rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a{
+    cursor: pointer;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 700,
+  'GRAD' 0,
+  'opsz' 40
+}
+
+.left{
+    right: 0;
+    position: absolute;
+    margin-right: 50px;
+}
+
+.exitKids{
+    border-radius: 5%;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    background-color: #E50914;
+    color:white;
+    border: none;
+    font-size: 0.7rem;
+}
+
+.kidsCard{
+    padding: 0.2rem;
+    background-image: linear-gradient(to left bottom, #12e4f8, #00cfff, #9280ff, #eb12d9, #eb12d9);
+    border-radius: 15%;
+    font-size: 0.8rem;
+    cursor: auto;
+}

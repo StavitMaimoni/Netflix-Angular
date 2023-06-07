@@ -1,0 +1,77 @@
+<!-- navbar start  -->
+<nav class="navbar navbar-dar navbar-expand-lg fixed-top navbar-dark" [ngStyle]="navbg">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="">Stavit-TV</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ng-container *ngIf="!kidsClicked">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="" (click)="displayMovies()">Movies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="" (click)="displayTvShow()">TV shows</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">My List</a>
+                    </li>
+                </ul>
+            </ng-container>
+
+            <ng-container *ngIf="kidsClicked">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="kids">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="kids" (click)="displayKidsMovies()">Movies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="kids" (click)="displayKidsTvShow()">TV shows</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">My List</a>
+                    </li>
+                </ul>
+            </ng-container>
+        </div>
+        <div class="collapse navbar-collapse left" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="search">
+                        <span class="material-symbols-outlined">
+                            search
+                        </span></a>
+                </li>
+                <ng-container *ngIf="!kidsClicked">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="kids"
+                            (click)="kidsClicked=true">Kids</a>
+                    </li>
+                </ng-container>
+                <ng-container *ngIf="kidsClicked">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page">
+                            <div class="kidsCard">Kids</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="">
+                            <button class="exitKids" routerLink="" (click)="kidsClicked=false">Exit Kids</button>
+                        </a>
+                    </li>
+                </ng-container>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- navbar end  -->
+
+<router-outlet></router-outlet>

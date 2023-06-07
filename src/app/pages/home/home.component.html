@@ -1,0 +1,339 @@
+<!-- banner start  -->
+<div class="contain-fluid">
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <ng-container *ngIf="!tvShowClicked">
+                <div class="carousel-item active" data-bs-interval="10000" *ngFor="let b of bannerResult;let i=index"
+                    [ngClass]="{active:i===1}">
+                    <img src="https://image.tmdb.org/t/p/original/{{ b.backdrop_path }}" class="d-block w-100" alt="..."
+                        [routerLink]="['/movie',b.id]">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2>{{b.original_title}}</h2>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="tvShowClicked">
+                <div class="carousel-item active" data-bs-interval="10000" *ngFor="let b of topRatedTv;let i=index"
+                    [ngClass]="{active:i===1}">
+                    <img src="https://image.tmdb.org/t/p/original/{{ b.backdrop_path }}" class="d-block w-100" alt="..."
+                        [routerLink]="['/tv',b.id]">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2>{{b.original_title}}</h2>
+                        <p>{{b.overview}}</p>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+<!-- banner end  -->
+
+<div class="contain mt-3 mb-5 p-4">
+    <!-- trending movies  -->
+    <div class="row mt-4">
+        <ng-container *ngIf="!tvShowClicked">
+            <h5 class="text-white">Trending Movies</h5>
+        </ng-container>
+        <ng-container *ngIf="tvShowClicked">
+            <h5 class="text-white">Top Rated TV Shows</h5>
+        </ng-container>
+        <div class="rowposter mt-3 p-2 position-relative">
+            <div class="category-scroll-container">
+                <div class="category-scroll-arrows arrowRight carousel-control-next"
+                    (click)="rightScroll('trendingContainer')">
+                    <span class="carousel-control-next-icon"></span>
+                </div>
+                <div class="category-scroll-arrows arrowLeft carousel-control-prev"
+                    (click)="leftScroll('trendingContainer')">
+                    <span class="carousel-control-prev-icon"></span>
+                </div>
+                <ng-container *ngIf="!tvShowClicked">
+                    <div class="rowposter-inner d-flex flex-row trendingContainer">
+                        <ng-container *ngFor="let t of trendingMovieResult">
+                            <img src="https://image.tmdb.org/t/p/original/{{ t.poster_path }}" class="rowimg" alt="..."
+                                [routerLink]="['/movie',t.id]">
+                        </ng-container>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="tvShowClicked">
+                    <div class="rowposter-inner d-flex flex-row trendingContainer">
+                        <ng-container *ngFor="let t of topRatedTv">
+                            <img src="https://image.tmdb.org/t/p/original/{{ t.poster_path }}" class="rowimg" alt="..."
+                                [routerLink]="['/tv',t.id]">
+                        </ng-container>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+        <!-- action movies  -->
+        <div class="row mt-4">
+            <ng-container *ngIf="!tvShowClicked">
+                <h5 class="text-white">Action Movies</h5>
+            </ng-container>
+            <ng-container *ngIf="tvShowClicked">
+                <h5 class="text-white">Action TV Shows</h5>
+            </ng-container>
+            <div class="rowposter mt-3 p-2 position-relative">
+                <div class="category-scroll-container">
+                    <div class="category-scroll-arrows arrowRight carousel-control-next"
+                        (click)="rightScroll('actionContainer')">
+                        <span class="carousel-control-next-icon"></span>
+                    </div>
+                    <div class="category-scroll-arrows arrowLeft carousel-control-prev"
+                        (click)="leftScroll('actionContainer')">
+                        <span class="carousel-control-prev-icon"></span>
+                    </div>
+                    <ng-container *ngIf="!tvShowClicked">
+                        <div class="rowposter-inner d-flex flex-row actionContainer">
+                            <ng-container *ngFor="let a of actionMovieResult">
+                                <img src="https://image.tmdb.org/t/p/original/{{ a.poster_path }}"
+                                    class="rowimg largeposter" alt="..." [routerLink]="['/movie',a.id]">
+                            </ng-container>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="tvShowClicked">
+                        <div class="rowposter-inner d-flex flex-row actionContainer">
+                            <ng-container *ngFor="let a of actionTv">
+                                <img src="https://image.tmdb.org/t/p/original/{{ a.poster_path }}"
+                                    class="rowimg largeposter" alt="..." [routerLink]="['/tv',a.id]">
+                            </ng-container>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+
+            <!-- adventure movies  -->
+            <div class="row mt-4">
+                <ng-container *ngIf="!tvShowClicked">
+                    <h5 class="text-white">Adventure Movies</h5>
+                </ng-container>
+                <ng-container *ngIf="tvShowClicked">
+                    <h5 class="text-white">Mystery TV Shows</h5>
+                </ng-container>
+                <div class="rowposter mt-3 p-2 position-relative">
+                    <div class="category-scroll-container">
+                        <div class="category-scroll-arrows arrowRight carousel-control-next"
+                            (click)="rightScroll('adventureContainer')">
+                            <span class="carousel-control-next-icon"></span>
+                        </div>
+                        <div class="category-scroll-arrows arrowLeft carousel-control-prev"
+                            (click)="leftScroll('adventureContainer')">
+                            <span class="carousel-control-prev-icon"></span>
+                        </div>
+                        <ng-container *ngIf="!tvShowClicked">
+                            <div class="rowposter-inner d-flex flex-row adventureContainer">
+                                <ng-container *ngFor="let a of adventureMovieResult">
+                                    <img src="https://image.tmdb.org/t/p/original/{{ a.poster_path }}"
+                                        class="rowimg largeposter" alt="..." [routerLink]="['/movie',a.id]">
+                                </ng-container>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="tvShowClicked">
+                            <div class="rowposter-inner d-flex flex-row adventureContainer">
+                                <ng-container *ngFor="let m of mysteryTv">
+                                    <img src="https://image.tmdb.org/t/p/original/{{ m.poster_path }}"
+                                        class="rowimg largeposter" alt="..." [routerLink]="['/tv',m.id]">
+                                </ng-container>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+
+                <!-- animation movies  -->
+                <div class="row mt-4">
+                    <ng-container *ngIf="!tvShowClicked">
+                        <h5 class="text-white">Animation Movies</h5>
+                    </ng-container>
+                    <ng-container *ngIf="tvShowClicked">
+                        <h5 class="text-white">Reality TV Shows</h5>
+                    </ng-container>
+                    <div class="rowposter mt-3 p-2 position-relative">
+                        <div class="category-scroll-container">
+                            <div class="category-scroll-arrows arrowRight carousel-control-next"
+                                (click)="rightScroll('animationContainer')">
+                                <span class="carousel-control-next-icon"></span>
+                            </div>
+                            <div class="category-scroll-arrows arrowLeft carousel-control-prev"
+                                (click)="leftScroll('animationContainer')">
+                                <span class="carousel-control-prev-icon"></span>
+                            </div>
+                            <ng-container *ngIf="!tvShowClicked">
+                                <div class="rowposter-inner d-flex flex-row animationContainer">
+                                    <ng-container *ngFor="let a of animationMovieResult">
+                                        <img src="https://image.tmdb.org/t/p/original/{{ a.poster_path }}"
+                                            class="rowimg largeposter" alt="..." [routerLink]="['/movie',a.id]">
+                                    </ng-container>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="tvShowClicked">
+                                <div class="rowposter-inner d-flex flex-row animationContainer">
+                                    <ng-container *ngFor="let r of realityTv">
+                                        <img src="https://image.tmdb.org/t/p/original/{{ r.poster_path }}"
+                                            class="rowimg largeposter" alt="..." [routerLink]="['/tv',r.id]">
+                                    </ng-container>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+
+                    <!-- comedy movies  -->
+                    <div class="row mt-4">
+                        <ng-container *ngIf="!tvShowClicked">
+                            <h5 class="text-white">Comedy Movies</h5>
+                        </ng-container>
+                        <ng-container *ngIf="tvShowClicked">
+                            <h5 class="text-white">Comedy TV Shows</h5>
+                        </ng-container>
+                        <div class="rowposter mt-3 p-2 position-relative">
+                            <div class="category-scroll-container">
+                                <div class="category-scroll-arrows arrowRight carousel-control-next"
+                                    (click)="rightScroll('comedyContainer')">
+                                    <span class="carousel-control-next-icon"></span>
+                                </div>
+                                <div class="category-scroll-arrows arrowLeft carousel-control-prev"
+                                    (click)="leftScroll('comedyContainer')">
+                                    <span class="carousel-control-prev-icon"></span>
+                                </div>
+                                <ng-container *ngIf="!tvShowClicked">
+                                    <div class="rowposter-inner d-flex flex-row comedyContainer">
+                                        <ng-container *ngFor="let c of comedyMovieResult">
+                                            <img src="https://image.tmdb.org/t/p/original/{{ c.poster_path }}"
+                                                class="rowimg largeposter" alt="..." [routerLink]="['/movie',c.id]">
+                                        </ng-container>
+                                    </div>
+                                </ng-container>
+                                <ng-container *ngIf="tvShowClicked">
+                                    <div class="rowposter-inner d-flex flex-row comedyContainer">
+                                        <ng-container *ngFor="let c of comedyTv">
+                                            <img src="https://image.tmdb.org/t/p/original/{{ c.poster_path }}"
+                                                class="rowimg largeposter" alt="..." [routerLink]="['/tv',c.id]">
+                                        </ng-container>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+
+                        <!-- documentary movies  -->
+                        <div class="row mt-4">
+                            <ng-container *ngIf="!tvShowClicked">
+                                <h5 class="text-white">Documentary Movies</h5>
+                            </ng-container>
+                            <ng-container *ngIf="tvShowClicked">
+                                <h5 class="text-white">Documentary TV Shows</h5>
+                            </ng-container>
+                            <div class="rowposter mt-3 p-2 position-relative">
+                                <div class="category-scroll-container">
+                                    <div class="category-scroll-arrows arrowRight carousel-control-next"
+                                        (click)="rightScroll('documentaryContainer')">
+                                        <span class="carousel-control-next-icon"></span>
+                                    </div>
+                                    <div class="category-scroll-arrows arrowLeft carousel-control-prev"
+                                        (click)="leftScroll('documentaryContainer')">
+                                        <span class="carousel-control-prev-icon"></span>
+                                    </div>
+                                    <ng-container *ngIf="!tvShowClicked">
+                                        <div class="rowposter-inner d-flex flex-row documentaryContainer">
+                                            <ng-container *ngFor="let d of documentaryMovieResult">
+                                                <img src="https://image.tmdb.org/t/p/original/{{ d.poster_path }}"
+                                                    class="rowimg largeposter" alt="..." [routerLink]="['/movie',d.id]">
+                                            </ng-container>
+                                        </div>
+                                    </ng-container>
+                                    <ng-container *ngIf="tvShowClicked">
+                                        <div class="rowposter-inner d-flex flex-row documentaryContainer">
+                                            <ng-container *ngFor="let d of documentaryTv">
+                                                <img src="https://image.tmdb.org/t/p/original/{{ d.poster_path }}"
+                                                    class="rowimg largeposter" alt="..." [routerLink]="['/tv',d.id]">
+                                            </ng-container>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+
+                            <!-- science-fiction movies  -->
+                            <div class="row mt-4">
+                                <ng-container *ngIf="!tvShowClicked">
+                                    <h5 class="text-white">Science-Fiction Movies</h5>
+                                </ng-container>
+                                <ng-container *ngIf="tvShowClicked">
+                                    <h5 class="text-white">Science-Fiction & Fantasy TV Shows</h5>
+                                </ng-container>
+                                <div class="rowposter mt-3 p-2 position-relative">
+                                    <div class="category-scroll-container">
+                                        <div class="category-scroll-arrows arrowRight carousel-control-next"
+                                            (click)="rightScroll('fictionContainer')">
+                                            <span class="carousel-control-next-icon"></span>
+                                        </div>
+                                        <div class="category-scroll-arrows arrowLeft carousel-control-prev"
+                                            (click)="leftScroll('fictionContainer')">
+                                            <span class="carousel-control-prev-icon"></span>
+                                        </div>
+                                        <ng-container *ngIf="!tvShowClicked">
+                                            <div class="rowposter-inner d-flex flex-row fictionContainer">
+                                                <ng-container *ngFor="let sf of sciencefictionMovieResult">
+                                                    <img src="https://image.tmdb.org/t/p/original/{{ sf.poster_path }}"
+                                                        class="rowimg largeposter" alt="..."
+                                                        [routerLink]="['/movie',sf.id]">
+                                                </ng-container>
+                                            </div>
+                                        </ng-container>
+                                        <ng-container *ngIf="tvShowClicked">
+                                            <div class="rowposter-inner d-flex flex-row fictionContainer">
+                                                <ng-container *ngFor="let sf of fantasyTv">
+                                                    <img src="https://image.tmdb.org/t/p/original/{{ sf.poster_path }}"
+                                                        class="rowimg largeposter" alt="..."
+                                                        [routerLink]="['/tv',sf.id]">
+                                                </ng-container>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+
+                                <!-- thriller movies  -->
+                                <div class="row mt-4">
+                                    <ng-container *ngIf="!tvShowClicked">
+                                        <h5 class="text-white">Thriller Movies</h5>
+                                    </ng-container>
+                                    <ng-container *ngIf="tvShowClicked">
+                                        <h5 class="text-white">Kids TV Shows</h5>
+                                    </ng-container>
+                                    <div class="rowposter mt-3 p-2 position-relative">
+                                        <div class="category-scroll-container">
+                                            <div class="category-scroll-arrows arrowRight carousel-control-next"
+                                                (click)="rightScroll('thrillerContainer')">
+                                                <span class="carousel-control-next-icon"></span>
+                                            </div>
+                                            <div class="category-scroll-arrows arrowLeft carousel-control-prev"
+                                                (click)="leftScroll('thrillerContainer')">
+                                                <span class="carousel-control-prev-icon"></span>
+                                            </div>
+                                            <ng-container *ngIf="!tvShowClicked">
+                                                <div class="rowposter-inner d-flex flex-row thrillerContainer">
+                                                    <ng-container *ngFor="let th of thrillerMovieResult">
+                                                        <img src="https://image.tmdb.org/t/p/original/{{ th.poster_path }}"
+                                                            class="rowimg largeposter" alt="..."
+                                                            [routerLink]="['/movie',th.id]">
+                                                    </ng-container>
+                                                </div>
+                                            </ng-container>
+                                            <ng-container *ngIf="tvShowClicked">
+                                                <div class="rowposter-inner d-flex flex-row thrillerContainer">
+                                                    <ng-container *ngFor="let k of kidsTv">
+                                                        <img src="https://image.tmdb.org/t/p/original/{{ k.poster_path }}"
+                                                            class="rowimg largeposter" alt="..."
+                                                            [routerLink]="['/tv',k.id]">
+                                                    </ng-container>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
